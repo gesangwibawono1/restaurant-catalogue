@@ -1,12 +1,9 @@
-import NowPlaying from '../views/pages/now-playing';
-import Upcoming from '../views/pages/upcoming';
+import Home from '../views/pages/home';
 import Detail from '../views/pages/detail';
 import Like from '../views/pages/like';
 
 const routes = {
-  '/': NowPlaying, // default page
-  '/now-playing': NowPlaying,
-  '/upcoming': Upcoming,
+  '/': Home, // default page
   '/detail/:id': Detail,
   '/like': Like,
 };
