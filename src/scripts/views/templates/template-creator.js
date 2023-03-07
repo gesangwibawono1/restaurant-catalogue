@@ -1,56 +1,105 @@
 import CONFIG from '../../globals/config';
 
-const createMovieDetailTemplate = (movie) => `
-  <h2 class="movie__title">${movie.title}</h2>
-  <img class="movie__poster" src="${CONFIG.BASE_IMAGE_URL + movie.poster_path}" alt="${movie.title}" />
-  <div class="movie__info">
-  <h3>Information</h3>
-    <h4>Tagline</h4>
-    <p>${movie.tagline}</p>
-    <h4>Release Date</h4>
-    <p>${movie.release_date}</p>
-    <h4>Duration</h4>
-    <p>${movie.runtime} minutes</p>
-    <h4>Rating</h4>
-    <p>${movie.vote_average}</p>
+const createRestaurantDetailTemplate = (restaurant) => `
+  <h2 class="restaurant__name">${restaurant.name}</h2>
+  <div class="restaurant__container__info">
+    <img class="restaurant__picture" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
+    <div class="restaurant__info">
+      <h3>Information</h3>
+      <h4>Address</h4>
+      <p>${restaurant.address}</p>
+      <h4>City</h4>
+      <p>${restaurant.city}</p>
+      <h4>Categories</h4>
+      <p>#One#Two</p>
+      <h4>Rating</h4>
+      <p>${restaurant.rating}</p>
+    </div>
   </div>
-  <div class="movie__overview">
-    <h3>Overview</h3>
-    <p>${movie.overview}</p>
+  <div class="restaurant__foods">
+    <h3>Foods</h3>
+    <div class="restaurant__scroll__foods">
+      <div class="restaurant__food">item 1</div>
+      <div class="restaurant__food">item 2</div>
+      <div class="restaurant__food">item 3</div>
+      <div class="restaurant__food">item 4</div>
+      <div class="restaurant__food">item 5</div>
+      <div class="restaurant__food">item 6</div>
+      <div class="restaurant__food">item 7</div>
+      <div class="restaurant__food">item 8</div>
+      <div class="restaurant__food">item 9</div>
+      <div class="restaurant__food">item 10</div>
+    </div>
+  </div>
+  <div class="restaurant__drinks">
+    <h3>Drinks</h3>
+    <div class="restaurant__scroll__drinks">
+      <div class="restaurant__drink">item 1</div>
+      <div class="restaurant__drink">item 2</div>
+      <div class="restaurant__drink">item 3</div>
+      <div class="restaurant__drink">item 4</div>
+      <div class="restaurant__drink">item 5</div>
+      <div class="restaurant__drink">item 6</div>
+      <div class="restaurant__drink">item 7</div>
+      <div class="restaurant__drink">item 8</div>
+      <div class="restaurant__drink">item 9</div>
+      <div class="restaurant__drink">item 10</div>
+    </div>
+  </div>
+  <div class="restaurant__description">
+    <h3>Description</h3>
+    <p>${restaurant.description}</p>
   </div>
 `;
 
-const createMovieItemTemplate = (movie) => `
+const createRestaurantItemTemplate = (restaurant) => `
   <div class="restaurant-item">
-    <div class="movie-item__header">
-      <img class="movie-item__header__poster" alt="${movie.title}"
-           src="${movie.backdrop_path ? CONFIG.BASE_IMAGE_URL + movie.backdrop_path : 'https://picsum.photos/id/666/800/450?grayscale'}">
-      <div class="movie-item__header__rating">
-        <p>⭐️<span class="movie-item__header__rating__score">${movie.vote_average}</span></p>
-      </div>
+    <div class="restaurant-item__thumbnail">
+      <img class="restaurant-item__thumbnail__picture"
+        src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}"
+        alt="${restaurant.name}">
+      <div class="restaurant-item__thumbnail__city">${restaurant.city}</div>
     </div>
-    <div class="movie-item__content">
-      <h3><a href="/#/detail/${movie.id}">${movie.title}</a></h3>
-      <p>${movie.overview}</p>
+    <div class="restaurant-item__content">
+      <div class="rating">
+        <div class="rating__fill" style="width: ${(restaurant.rating / 5) * 100}%">
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+        </div>
+        <div class="rating__empty">
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+        </div>
+      </div>
+      <h3>
+        <a href="/#/detail/${restaurant.id}" class="restaurant-item__name">${restaurant.name}</a>
+      </h3>
+      <p class="restaurant-item__description">${restaurant.description}</p>
     </div>
   </div>
   `;
 
 const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
+  <button aria-label="like this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
 export {
-  createMovieItemTemplate,
-  createMovieDetailTemplate,
+  createRestaurantItemTemplate,
+  createRestaurantDetailTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
 };

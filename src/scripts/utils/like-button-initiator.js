@@ -1,4 +1,4 @@
-import FavoriteMovieIdb from '../data/favorite-movie-idb';
+import FavoriteMovieIdb from '../data/favorite-restaurant-idb';
 import { createLikeButtonTemplate, createLikedButtonTemplate } from '../views/templates/template-creator';
 
 const LikeButtonInitiator = {

@@ -89,14 +89,12 @@ main {
  * Jumbotron
  */
  
- .hero__image {
+.hero__image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../public/images/hero.jpg");
   width: 100%;
-  height: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 16px;
   position: relative;
 }
  
@@ -109,14 +107,23 @@ main {
   color: white;
 }
 
+.hero__text > h1 {
+  font-size: 50px;
+}
+.hero__text > p {
+  font-size: 14px;
+}
+
 .content {
   margin: 0 auto;
   padding: 16px;
   min-height: 100%;
 }
 
-.content .content__heading {
+.content__heading {
+  font-size: 30px;
   font-weight: normal;
+  text-align: center;
 }
 
 
@@ -142,69 +149,96 @@ main {
   overflow: hidden;
 }
 
-.restaurant-item__header {
+.restaurant-item__thumbnail {
   position: relative;
-}
-
-.restaurant-item .movie-item__header .movie-item__header__poster {
-  width: 100%;
-}
-
-.restaurant-item .movie-item__header .movie-item__header__rating {
-  position: absolute;
-  padding: 8px;
-  bottom: 20px;
-  left: 0;
-  display: inline-block;
-  background-color: black;
+  text-align: center;
   color: white;
 }
 
-.restaurant-item .movie-item__header .movie-item__header__rating .movie-item__header__rating__score {
-  margin-left: 10px;
+.restaurant-item__thumbnail__picture {
+  width: 100%;
 }
 
-.restaurant-item .movie-item__content {
-  padding: 16px;
+.restaurant-item__thumbnail__city {
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  padding: 14px;
+  background-color: black;
+  opacity: 0.8;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.restaurant-item .movie-item__content h3 {
-  margin: 0 0 10px 0;
+.restaurant-item__content {
+  padding: 0px 16px 16px 16px;
 }
 
-.restaurant-item .movie-item__content h3 a {
+.restaurant-item__name {
+  font-weight: bold;
+  font-size: 16px;
   color: #046C4E;
   text-decoration: none;
 }
 
-.restaurant-item .movie-item__content p {
+.restaurant-item__description {
+  font-size: 12px;
+  line-height: 1.5em;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
 /*
-  Movie
+  Restaurant
 */
 
-.movie {
-  margin: 0 auto;
+.restaurant {
+  padding: 16px;
+  margin: auto;
   width: 100%;
   max-width: 800px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.movie .movie__poster {
+.restaurant__name {
+  margin-bottom: 16px;
+}
+
+.restaurant__container__info {
   width: 100%;
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.movie .movie__info h4 {
+.restaurant__picture {
+  max-width: 400px;
+  background-size: cover;
+}
+
+.restaurant__info h4 {
   margin: 8px 0;
+}
+
+.restaurant__foods, .restaurant__drinks, .restaurant__description {
+  width: 100%;
+}
+
+.restaurant__scroll__foods, .restaurant__scroll__drinks {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.restaurant__food, .restaurant__drink {
+  padding: 16px;
 }
 
 
@@ -224,6 +258,39 @@ footer p {
 footer p a {
   color: #046C4E;
   text-decoration: none;
+}
+
+/*
+  Rating
+*/
+
+.rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: gray;
+  font-size: 25px;
+  height: 25px;
+  width: auto;
+  margin: 0;
+  position: relative;
+  padding: 0;
+}
+
+.rating__fill {
+  color: orange;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.rating__empty {
+  padding: 0;
+  display: flex;
+  z-index: 0;
 }
 
 /*

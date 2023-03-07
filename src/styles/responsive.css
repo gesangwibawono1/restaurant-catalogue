@@ -1,3 +1,14 @@
+@media screen and (max-width: 499px) {
+  .hero__image {
+    height: 300px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .hero__image {
+    height: 400px;
+  }
+}
+
 @media screen and (min-width: 650px) {
   .app-bar {
     grid-template-columns: 1fr auto;
@@ -23,9 +34,13 @@
 
   .app-bar .app-bar__navigation ul li a {
     display: inline-block;
-    width: 120px;
+    width: 80px;
     text-align: center;
     margin: 0;
+  }
+
+  .hero__image {
+    height: 400px;
   }
 
   .restaurants {
@@ -33,24 +48,27 @@
 
   }
 
-  .movie {
+  .restaurant {
     grid-template-columns: auto 1fr;
   }
-
-  .movie .movie__title {
-    grid-column-start: 1;
-    grid-column-end: 3;
+  
+  .restaurant__container__info {
+    flex-direction: row;
   }
 
-  .movie .movie__overview {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
 }
 
 @media screen and (min-width: 800px) {
   .app-bar .app-bar__brand h1 {
     font-size: 2em;
+  }
+
+  .app-bar .app-bar__navigation ul li a {
+    width: 120px;
+  }
+
+  .hero__image {
+    height: 400px;
   }
 }
 
@@ -58,16 +76,36 @@
   .restaurants {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .app-bar .app-bar__navigation ul li a {
+    width: 120px;
+  }
+
+  .hero__image {
+    height: 400px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .restaurants {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .app-bar .app-bar__navigation ul li a {
+    width: 120px;
+  }
+
+  .hero__image {
+    height: 400px;
+  }
 }
 
 @media screen and (min-width: 1600px) {
   .restaurants {
     grid-template-columns: repeat(5, 1fr);
+  }
+
+  .hero__image {
+    height: 500px;
   }
 }
