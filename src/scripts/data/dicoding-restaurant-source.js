@@ -16,7 +16,9 @@ class DicodingRestaurantSource {
   static async addReview(review) {
     const response = await fetch(API_ENDPOINT.REVIEW, {
       method: 'POST',
-      header: { 'Content-type': 'application/json; charset=UTF-8' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(review),
     });
     const responseJson = await response.json();

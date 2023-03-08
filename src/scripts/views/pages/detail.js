@@ -15,6 +15,13 @@ const Detail = {
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
+    // const review = {
+    //   id: url.id,
+    //   name: 'WFE',
+    //   review: 'Example',
+    // };
+    // const isSuccess = await DicodingRestaurantSource.addReview(review);
+    // console.log(isSuccess);
     const restaurant = await DicodingRestaurantSource.detailRestaurant(url.id);
     document.getElementById('reviewId').value = url.id;
     const restaurantContainer = document.querySelector('#restaurant');
