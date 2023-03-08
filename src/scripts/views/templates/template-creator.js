@@ -59,7 +59,8 @@ const createRestaurantDetailTemplate = (restaurant) => {
       <p>${restaurant.description}</p>
     </div>
     <div class="restaurant__reviews">
-      <h3>Reviews</h3>
+      <h3>Reviews (${restaurant.customerReviews.length})</h3>
+      <button class="restaurant__add__review" onclick="openModal('${restaurant.id}')">Add Review</button>
       <ul class="restaurant__container__reviews">
         ${reviews}
       </ul>

@@ -3,6 +3,8 @@ import { createRestaurantItemTemplate } from '../templates/template-creator';
 
 const Home = {
   async render() {
+    const loading = document.querySelector('#loading');
+    loading.style.visibility = 'visible';
     return `
       <div class="hero__image">
         <div class="hero__text">
@@ -20,9 +22,12 @@ const Home = {
   async afterRender() {
     const restaurants = await DicodingRestaurantSource.allRestaurants();
     const restaurantsContainer = document.querySelector('#restaurants');
+    restaurantsContainer.innerHTML = '';
     restaurants.forEach((restaurant) => {
       restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
     });
+    const loading = document.querySelector('#loading');
+    loading.style.visibility = 'hidden';
   },
 };
 

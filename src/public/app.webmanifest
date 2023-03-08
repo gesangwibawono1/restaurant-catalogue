@@ -1,12 +1,12 @@
 {
-  "id": "restaurant-catalogue",
+  "id": "dicoding-resto",
   "start_url": "./index.html",
-  "name": "Restaurant Catalogue Lite",
-  "short_name": "Restaurant Lite",
-  "description": "Free Restaurant Catalogue for you",
+  "name": "Dicoding Restaurant Lite",
+  "short_name": "Dicoding Resto",
+  "description": "Indonesian Food for you",
   "display": "standalone",
   "background_color": "#fafafa",
-  "theme_color": "#1976d2",
+  "theme_color": "#046C4E",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",

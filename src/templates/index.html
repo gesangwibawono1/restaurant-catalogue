@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free movie catalogue for you">
+  <meta name="description" content="Indonesian Food for you">
   <meta name="theme-color" content="#DB0000"/>
   
   <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
@@ -15,27 +15,47 @@
   <title>Dicoding Resto</title>
 </head>
 <body>
-<header class="app-bar">
-  <div class="app-bar__menu">
-    <button id="hamburgerButton" aria-label="toggle menu">☰</button>
+  <a href="#restaurants" class="skip-link">Skip To Content</a>
+  <header class="app-bar">
+    <div class="app-bar__menu">
+      <button id="hamburgerButton" aria-label="toggle menu">☰</button>
+    </div>
+    <div class="app-bar__brand">
+      <h1>Dicoding Resto</h1>
+    </div>
+    <nav id="navigationDrawer" class="app-bar__navigation">
+      <ul>
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/favorite">Favorite</a></li>
+        <li><a href="https://github.com/gesangwibawono1" target="_blank" rel="noreferrer">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="mainContent"></main>
+  <div id="formModal" class="modal">
+    <div class="modal__content">
+      <div class="modal__header">
+        <h5>Review Form</h5>
+        <button onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal__body">
+        <form id="reviewForm" method="post">
+          <input id="reviewId" type="hidden">
+          <label>Name:</label>
+          <input id="reviewName" type="text" class="form__input" name="name" placeholder="Enter your name">
+          <label>Review:</label>
+          <input id="reviewReview" type="text" class="form__input" name="review" placeholder="Enter something">
+          <button type="button" class="form__submit" onclick="sendReview()">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="app-bar__brand">
-    <h1>Dicoding Resto</h1>
+  <div id="loading" class="loading">
+    Loading&#8230;     
   </div>
-  <nav id="navigationDrawer" class="app-bar__navigation">
-    <ul>
-      <li><a href="#/">Home</a></li>
-      <li><a href="#/favorite">Favorite</a></li>
-      <li><a href="https://github.com/gesangwibawono1" target="_blank" rel="noreferrer">About</a></li>
-    </ul>
-  </nav>
-</header>
-<main id="mainContent"></main>
-<div id="loading" class="loading" onClick="hideSpinner()">
-  Loading&#8230;     
-</div>
-<footer>
-  <p>All data obtained from <a href="https://restaurant-api.dicoding.dev/" target="_blank" rel="noreferrer">Restaurant Dicoding</a></p>
-</footer>
+  <div id="toast">Successfully submitted</div>
+  <footer>
+    <p>All data obtained from <a href="https://restaurant-api.dicoding.dev/" target="_blank" rel="noreferrer">Restaurant Dicoding</a></p>
+  </footer>
 </body>
 </html>

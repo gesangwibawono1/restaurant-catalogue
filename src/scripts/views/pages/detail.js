@@ -5,6 +5,8 @@ import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
   async render() {
+    const loading = document.querySelector('#loading');
+    loading.style.visibility = 'visible';
     return `
       <div id="restaurant" class="restaurant"></div>
       <div id="likeButtonContainer"></div>
@@ -14,12 +16,15 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await DicodingRestaurantSource.detailRestaurant(url.id);
+    document.getElementById('reviewId').value = url.id;
     const restaurantContainer = document.querySelector('#restaurant');
     restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+    const loading = document.querySelector('#loading');
+    loading.style.visibility = 'hidden';
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
-      movie: {
+      restaurant: {
         id: restaurant.id,
         name: restaurant.name,
         description: restaurant.description,
