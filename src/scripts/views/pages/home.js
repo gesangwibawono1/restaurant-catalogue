@@ -1,10 +1,10 @@
 import DicodingRestaurantSource from '../../data/dicoding-restaurant-source';
-import { createRestaurantItemTemplate } from '../templates/template-creator';
+import Spinner from '../../utils/spinner';
+import '../components/restaurant-list';
 
 const Home = {
   async render() {
-    const loading = document.querySelector('#loading');
-    loading.style.visibility = 'visible';
+    Spinner.show();
     return `
       <div class="hero__image">
         <div class="hero__text">
@@ -14,20 +14,16 @@ const Home = {
       </div>
       <div class="content">
         <h1 class="content__heading">Explore Restaurant</h1>
-        <div id="restaurants" class="restaurants">
+        <restaurant-list class="restaurants"></restaurant-list>
       </div>
     `;
   },
 
   async afterRender() {
     const restaurants = await DicodingRestaurantSource.allRestaurants();
-    const restaurantsContainer = document.querySelector('#restaurants');
-    restaurantsContainer.innerHTML = '';
-    restaurants.forEach((restaurant) => {
-      restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
-    const loading = document.querySelector('#loading');
-    loading.style.visibility = 'hidden';
+    const restaurantListElement = document.querySelector('restaurant-list');
+    restaurantListElement.restaurants = restaurants;
+    Spinner.hide();
   },
 };
 

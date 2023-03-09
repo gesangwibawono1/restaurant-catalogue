@@ -4,6 +4,11 @@ import '../styles/responsive.css';
 import '../styles/skip-link.css';
 import App from './views/app';
 import swRegister from './utils/sw-register';
+import Modal from './utils/modal';
+import Spinner from './utils/spinner';
+import Toast from './utils/toast';
+import ReviewForm from './utils/review-form';
+import DicodingRestaurantSource from './data/dicoding-restaurant-source';
 
 const app = new App({
   button: document.querySelector('#hamburgerButton'),
@@ -20,30 +25,26 @@ window.addEventListener('load', () => {
   swRegister();
 });
 
-window.openModal = function () {
-  const modal = document.getElementById('formModal');
-  modal.style.display = 'block';
+window.openModal = () => {
+  Modal.open();
 };
 
-window.closeModal = function () {
-  const modal = document.getElementById('formModal');
-  modal.style.display = 'none';
+window.closeModal = () => {
+  Modal.close();
 };
 
-window.sendReview = function () {
-  const modal = document.getElementById('formModal');
-  modal.style.display = 'none';
-  const form = document.getElementById('reviewForm');
-  const id = document.getElementById('reviewId').value;
-  const name = document.getElementById('reviewName').value;
-  const review = document.getElementById('reviewReview').value;
-  const toast = document.getElementById('toast');
-  toast.innerText = `${id + name + review}`;
-  toast.className = 'show';
-  setTimeout(function () {
-      toast.className = toast.classList.toggle('show');
-    },
-    3000
-  );
-  form.reset();
+window.sendReview = async () => {
+  Modal.close();
+  Spinner.show();
+  const review = ReviewForm.review();
+  const isSuccess = await DicodingRestaurantSource.addReview(review);
+  let text = '';
+  if (isSuccess) {
+    text = 'Successfully submitted review.';
+  } else {
+    text = 'Sorry failed to submit! Something went wrong.';
+  }
+  ReviewForm.reset();
+  Spinner.hide();
+  Toast.show(text);
 };

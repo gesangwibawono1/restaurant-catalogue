@@ -1,33 +1,24 @@
 import UrlParser from '../../routes/url-parser';
 import DicodingRestaurantSource from '../../data/dicoding-restaurant-source';
-import { createRestaurantDetailTemplate } from '../templates/template-creator';
+import '../components/restaurant-detail';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
+import Spinner from '../../utils/spinner';
 
 const Detail = {
   async render() {
-    const loading = document.querySelector('#loading');
-    loading.style.visibility = 'visible';
+    Spinner.show();
     return `
-      <div id="restaurant" class="restaurant"></div>
+      <restaurant-detail class="restaurant"></restaurant-detail>
       <div id="likeButtonContainer"></div>
     `;
   },
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    // const review = {
-    //   id: url.id,
-    //   name: 'WFE',
-    //   review: 'Example',
-    // };
-    // const isSuccess = await DicodingRestaurantSource.addReview(review);
-    // console.log(isSuccess);
     const restaurant = await DicodingRestaurantSource.detailRestaurant(url.id);
     document.getElementById('reviewId').value = url.id;
-    const restaurantContainer = document.querySelector('#restaurant');
-    restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
-    const loading = document.querySelector('#loading');
-    loading.style.visibility = 'hidden';
+    const restaurantDetailElement = document.querySelector('restaurant-detail');
+    restaurantDetailElement.restaurant = restaurant;
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
@@ -40,6 +31,8 @@ const Detail = {
         pictureId: restaurant.pictureId,
       },
     });
+
+    Spinner.hide();
   },
 };
 
