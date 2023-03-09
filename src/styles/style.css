@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -36,7 +37,7 @@ body {
   background-color: transparent;
   border: none;
   font-size: 18px;
-  padding: 8px;
+  padding: 10px 14px;
   cursor: pointer;
 }
 
@@ -288,12 +289,15 @@ main {
 }
 
 .form__input {
-  width: 100%;
+  display: block;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: groove;
   margin-bottom: 12px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
 }
 
 .form__input:focus {
