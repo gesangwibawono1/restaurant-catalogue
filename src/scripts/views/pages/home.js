@@ -13,7 +13,7 @@ const Home = {
         </div>
       </div>
       <div class="content">
-        <h1 class="content__heading">Explore Restaurant</h1>
+        <h2 class="content__heading">Explore Restaurant</h2>
         <restaurant-list class="restaurants"></restaurant-list>
       </div>
     `;

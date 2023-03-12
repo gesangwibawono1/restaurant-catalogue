@@ -333,6 +333,13 @@ main {
   font-weight: normal;
 }
 
+#query {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
 
 /*
   Footer

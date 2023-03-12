@@ -1,7 +1,8 @@
 import UrlParser from '../../routes/url-parser';
 import DicodingRestaurantSource from '../../data/dicoding-restaurant-source';
 import '../components/restaurant-detail';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import Spinner from '../../utils/spinner';
 
 const Detail = {
@@ -20,8 +21,9 @@ const Detail = {
     const restaurantDetailElement = document.querySelector('restaurant-detail');
     restaurantDetailElement.restaurant = restaurant;
 
-    LikeButtonInitiator.init({
+    LikeButtonPresenter.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
+      favoriteRestaurants: FavoriteRestaurantIdb,
       restaurant: {
         id: restaurant.id,
         name: restaurant.name,
