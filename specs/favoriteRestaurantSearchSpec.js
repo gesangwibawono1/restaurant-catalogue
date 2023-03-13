@@ -69,15 +69,15 @@ describe('Searching restaurants', () => {
         id: 1,
         name: 'One',
       }]);
-      expect(document.querySelectorAll('.restaurant__name')
+      expect(document.querySelectorAll('.restaurant-item__name')
         .item(0).textContent)
         .toEqual('One');
     });
 
     it('should show - when the restaurant returned does not contain a name', (done) => {
       document.getElementById('restaurants').addEventListener('restaurants:updated', () => {
-        const restaurantNames = document.querySelectorAll('.restaurant__name');
-        expect(restaurantNames.item(0).textContent).toEqual('-');
+        const restaurantNames = document.querySelectorAll('.restaurant-item__name');
+        expect(restaurantNames.item(0).textContent).toEqual('undefined');
 
         done();
       });

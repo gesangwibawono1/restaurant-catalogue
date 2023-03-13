@@ -62,7 +62,7 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
     favoriteRestaurant.putRestaurant({ id: 1, name: 'resto a' });
     favoriteRestaurant.putRestaurant({ id: 2, name: 'resto b' });
     favoriteRestaurant.putRestaurant({ id: 3, name: 'resto abc' });
-    favoriteRestaurant.putRestaurant({ id: 4, name: 'amzing resto abcd' });
+    favoriteRestaurant.putRestaurant({ id: 4, name: 'amazing resto abcd' });
 
     expect(await favoriteRestaurant.searchRestaurants('resto a')).toEqual([
       { id: 1, name: 'resto a' },

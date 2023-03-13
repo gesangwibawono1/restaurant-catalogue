@@ -1,5 +1,6 @@
 @media screen and (max-width: 499px) {
   .hero__image {
+    background-image: url("../public/images/hero-small.jpg");
     height: 300px;
   }
 
@@ -9,6 +10,7 @@
 }
 @media screen and (min-width: 500px) {
   .hero__image {
+    background-image: url("../public/images/hero-small.jpg");
     height: 400px;
   }
 
@@ -48,6 +50,7 @@
   }
 
   .hero__image {
+    background-image: url("../public/images/hero-small.jpg");
     height: 400px;
   }
 
