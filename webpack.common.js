@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
-const ImageminMozjpeg = require("imagemin-mozjpeg");
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
+const ImageminMozjpeg = require('imagemin-mozjpeg');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.js$/,
         enforce: 'pre',
-        use: ['source-map-loader']
+        use: ['source-map-loader'],
       },
       {
         test: /\.css$/,
@@ -46,7 +46,7 @@ module.exports = {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
           globOptions: {
-            ignore: ["**/images/**"],
+            ignore: ['**/images/**'],
           },
         },
       ],
@@ -63,8 +63,8 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        parallel: true
-      })
-    ]
-  }
+        parallel: true,
+      }),
+    ],
+  },
 };

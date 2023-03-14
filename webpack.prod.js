@@ -1,8 +1,8 @@
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -20,14 +20,14 @@ module.exports = merge(common, {
       cacheGroups: {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10
+          priority: -10,
         },
         default: {
           minChunks: 2,
           priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+          reuseExistingChunk: true,
+        },
+      },
     },
     minimize: true,
     minimizer: ['...', new CssMinimizerPlugin()],
@@ -48,5 +48,8 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new BundleAnalyzerPlugin(),
+  ],
 });
